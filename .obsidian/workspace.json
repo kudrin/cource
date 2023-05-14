@@ -13,13 +13,36 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Test 0.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d473a986793809ce",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.2.8"
+              }
+            }
+          },
+          {
+            "id": "026243d28a20aca5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Test 1.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -62,6 +85,14 @@
             "type": "leaf",
             "state": {
               "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "a767045bfc7ea4a0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
               "state": {}
             }
           }
@@ -146,11 +177,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ba9231b08dc8601a",
+  "active": "026243d28a20aca5",
   "lastOpenFiles": [
+    "Test 0.md",
+    "Test 1.md",
+    "Cats(6) 1.jpg",
+    "Cats(6).jpg",
+    "Cats(5).jpg",
+    "Cats(4) 1.jpg",
+    "Cats(4).jpg",
+    "Cats(3).jpg",
+    "Cats(2).jpg",
+    "Untitled.md",
     "Untitled.canvas",
     "2023-05-12.md",
-    "Test 1.md",
     "Pasted image 20230512133215.png",
     "Pasted image 20230512131726.png"
   ]
