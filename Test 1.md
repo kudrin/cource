@@ -11,12 +11,12 @@
 Отсюда сразу намечаются 4 системы - заказы, работа с воркерами,  склад, биллинг. Это использую как скелет для всей остальной архитектуры.
 
 
-![[Cats(2).jpg]]
+![[/images/main.jpg]]
 
 
 ## Orders
 
-![[Cats(3).jpg]]
+![[/images/main.jpg]]
 
 Корневой домен. Содержит информацию о заявках, является окестратором остальных сервисов. В основе лежит сущность **Заказ**. Сага кажется тут оверхедом, используем стейт машину.
 
@@ -65,10 +65,7 @@ order_1 canceled cat#1 2023-06-01 12:00:01
 Тут на самом деле 2 субдомена, под одним знаменателем. Система тестирования воркеров, и система подбора исполнителя.
 
 Система тестирования кажется очень изолированной. Результатом ее работы будет список воркеров. Но этот список нужен только для подбора воркера под конкретный заказ.
-
-
-![[Cats(4) 1.jpg]]
-
+![[/images/workers.jpg]]
 Итак основной таблицей у нас есть список воркеров. 
 
 ```sql
@@ -113,7 +110,7 @@ table 'answeers':
 Хрнаит в себе атомарные фин. транзакции, через двойную запись дебитор-кредитор, суммы положительные, деньги, чере Value Object.
 
 
-![[Cats(5).jpg]]
+![[/images/billing.jpg]]
 
 Важные моменты связанны с операционными счетами. Все оформляем как проводки, нам хватит одной таблицы:
 
@@ -134,36 +131,33 @@ table 'entiries':
 
 ```yaml
 Order is create:
-	Worker award:
-	  uid: "1234-..."
-	  transaction_uid: "0001-..." # Совпадает
-	  creditor_type: "client"
-	  creditor_uid "2134-.."      # Client uid
-	  debtor_type: "order"
-	  debrtor_uid "2134-.."       # Order uid
-	  amount_fractional: 10000    # 100.00 Котоедениц
-	  amount_currency: 'CAT' 
-	  comment: "Списываем с клиента сумму на выполнение заказа"
-
-   Discount:
-	  uid: "1234-..."
-	  transaction_uid: "0001-..." # Совпадает
-	  creditor_type: "order"
-	  creditor_uid "213-.."       # Order uid
-	  debtor_type: "client"
-	  debrtor_uid "2134-.."       # Clinet uid
-	  amount_fractional: 1000     # 10.00 Котоедениц
-	  amount_currency: 'CAT' 
-	  comment: "Скидка по закзу `231...`"
-   
+  Worker award:
+    uid: "1234-..."
+    transaction_uid: "0001-..." # Совпадает
+    creditor_type: "client"
+    creditor_uid "2134-.."      # Client uid
+    debtor_type: "order"
+    debrtor_uid "2134-.."       # Order uid
+    amount_fractional: 10000    # 100.00 Котоедениц
+    amount_currency: 'CAT' 
+    comment: "Списываем с клиента сумму на выполнение заказа"
+  Discount:
+    uid: "1234-..."
+    transaction_uid: "0001-..." # Совпадает
+    creditor_type: "order"
+    creditor_uid "213-.."       # Order uid
+    debtor_type: "client"
+    debrtor_uid "2134-.."       # Clinet uid
+    amount_fractional: 1000     # 10.00 Котоедениц
+    amount_currency: 'CAT' 
+    comment: "Скидка по закзу `231...`"
 ```
 
 ## Warehouse
 
 Основное с чем приходится работать, это с заяками на подбок инструментов
 
-![[Cats(6) 1.jpg]]
-
+![[/images/warehouse.jpg]]
 ```sql
 table 'warehouse_order':
 	- uid
