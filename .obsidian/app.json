@@ -4,5 +4,6 @@
     "ru"
   ],
   "alwaysUpdateLinks": true,
-  "promptDelete": false
+  "promptDelete": false,
+  "spellcheck": true
 }
